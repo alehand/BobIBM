@@ -1,0 +1,22 @@
+{
+  "name": "recetas-app-icabob",
+  "version": "1.0.0",
+  "description": "Aplicación web para buscar recetas basadas en ingredientes usando IBM ICA",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "recetas",
+    "ica",
+    "ibm",
+    "workflow",
+    "langflow"
+  ],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

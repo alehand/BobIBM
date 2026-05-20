@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+main {
+    padding: 40px 30px;
+}
+
+.input-section {
+    margin-bottom: 40px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+#ingredients {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+#ingredients:focus {
+    outline: none;
+    border-color: #2a5298;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(30, 60, 114, 0.4);
+}
+
+.search-btn:active {
+    transform: translateY(0);
+}
+
+.search-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.results-section h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #2a5298;
+}
+
+.results-container {
+    min-height: 200px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #95a5a6;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.empty-state svg {
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+}
+
+/* Estilos para el acordeón de recetas */
+.recipe-accordion {
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    transition: box-shadow 0.3s;
+}
+
+.recipe-accordion:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    background: #f8f9fa;
+    transition: background 0.3s;
+    user-select: none;
+}
+
+.recipe-header:hover {
+    background: #e9ecef;
+}
+
+.recipe-header.active {
+    background: #e3f2fd;
+}
+
+.recipe-icon {
+    font-size: 2.5rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.recipe-title-container {
+    flex: 1;
+}
+
+.recipe-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.recipe-meta {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.recipe-chevron {
+    font-size: 1.5rem;
+    color: #95a5a6;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+}
+
+.recipe-header.active .recipe-chevron {
+    transform: rotate(180deg);
+}
+
+.recipe-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.recipe-content.active {
+    max-height: 2000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.recipe-body {
+    padding: 25px;
+    background: white;
+    line-height: 1.8;
+}
+
+.recipe-body h3 {
+    color: #2a5298;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.recipe-body h3:first-child {
+    margin-top: 0;
+}
+
+.recipe-body ul, .recipe-body ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.recipe-body li {
+    margin-bottom: 8px;
+}
+
+.recipe-body p {
+    margin-bottom: 15px;
+}
+
+.recipe-body strong {
+    color: #2c3e50;
+}
+
+.error-message {
+    background: #fee;
+    color: #c33;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #c33;
+}
+
+.success-message {
+    background: #efe;
+    color: #3c3;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #3c3;
+}
+
+.simple-result {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    line-height: 1.8;
+    color: #2c3e50;
+}
+
+footer {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    main {
+        padding: 30px 20px;
+    }
+    
+    .recipe-icon {
+        font-size: 2rem;
+    }
+    
+    .recipe-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Made with Bob */
