@@ -2,6 +2,11 @@
 
 Aplicación web que busca recetas basándose en los ingredientes que el usuario proporciona, utilizando un workflow de IBM ICA (Intelligent Conversational Agent) para la búsqueda inteligente.
 
+## 📚 Guías de Configuración
+
+- **[📤 Guía de GitHub](GITHUB_SETUP.md)** - Paso a paso para subir el proyecto a GitHub
+- **[🚀 Guía de Despliegue](DEPLOYMENT_GUIDE.md)** - Cómo hacer la app pública en internet (Render, Railway, Heroku)
+
 ## 📋 Descripción
 
 Esta aplicación permite a los usuarios ingresar una lista de ingredientes disponibles y obtener recetas que pueden prepararse con esos ingredientes. La lógica de búsqueda y el contexto están implementados en una Agentic App de ICA.
