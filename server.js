@@ -1,11 +1,20 @@
+require('dotenv').config();
+
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const PORT = 3000;
-const API_KEY = 'sk-BJSh0ch0gU3gXo2ZjvB8D85ZRRlh8wjK4qm8u5_QKQs';
-const WORKFLOW_ENDPOINT = 'https://langflow.servicesessentials.ibm.com/api/v1/run/e216a392-2d89-45a0-9702-df9152a81827';
+// Configuración desde variables de entorno
+const PORT = process.env.PORT || 3000;
+const API_KEY = process.env.ICA_API_KEY || 'sk-BJSh0ch0gU3gXo2ZjvB8D85ZRRlh8wjK4qm8u5_QKQs';
+const WORKFLOW_ID = process.env.ICA_WORKFLOW_ID || 'e216a392-2d89-45a0-9702-df9152a81827';
+const API_ENDPOINT = process.env.ICA_API_ENDPOINT || 'https://langflow.servicesessentials.ibm.com/api/v1/run';
+
+console.log('🚀 Servidor iniciando...');
+console.log('📍 Puerto:', PORT);
+console.log('🔑 API Key configurada:', API_KEY ? 'Sí ✓' : 'No ✗');
+console.log('🆔 Workflow ID:', WORKFLOW_ID);
 
 // Tipos MIME
 const mimeTypes = {
@@ -51,7 +60,10 @@ const server = http.createServer(async (req, res) => {
                 console.log('Enviando petición a ICA:', payload);
 
                 // Hacer la petición al workflow de ICA
-                const response = await fetch(WORKFLOW_ENDPOINT, {
+                const workflowUrl = `${API_ENDPOINT}/${WORKFLOW_ID}`;
+                console.log('URL del workflow:', workflowUrl);
+                
+                const response = await fetch(workflowUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
